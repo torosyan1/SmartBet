@@ -12,7 +12,7 @@ io.sockets.on("connection", (socket) => {
     let city = null;
     //Get City Data
     try {
-      const response = await axios.get(data.url);
+      const response = await axios.get(`https://www.metaweather.com/api/location/search/?query=${data.query}`);
       city = response.data;
     } catch (error) {
       return console.log(error);

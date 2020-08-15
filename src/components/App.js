@@ -17,13 +17,13 @@ class App extends React.Component {
   search = () => {
     const socket = io('http://localhost:5000');
     socket.emit('location', {
-      url: `https://www.metaweather.com/api/location/search/?query=${this.state.inputValue}`
+      query: this.state.inputValue
     });
     socket.on('location', (data) => {
       this.setState({
         data: [data.city, data.wather]
       }, () => {
-        this.props.setDataStore(this.state.data)
+          this.props.setDataStore(this.state.data)
       })
     })
 }
